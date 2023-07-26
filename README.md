@@ -206,7 +206,7 @@
                     const figmaLink = document.getElementById('figmaLink');
                   
                     // 表示およびタイピングされるテキスト
-                    const loadingText = "読み込み中..........................................";
+                    const loadingText = "読み込み中..............";
                     let currentIndex = 0;
                   
                     // タイピング効果をシミュレートする関数
