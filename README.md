@@ -1,1 +1,450 @@
 # web-2
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学籍番号 - web 演習11回目の課題</title>
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Josh's custom css Reset -最近の仕様に対応したCSSをリセット -->
+    <!-- デフォルトのHTMLが持つスタイルをリセットする -->
+    <link rel="stylesheet" href="reset.css">
+
+    <style>
+
+        
+
+        body {
+            background: #d37517;
+            background-image: url('yaa.png');
+    background-repeat: repeat;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            max-width: 400px;
+            margin: 0;
+            padding: 10px; /* メニューの内側の余白を追加 */
+            position: fixed;
+            top: 0px; /* 上にずらす */
+            left: 50%; /* 画面の中央に配置 */
+            transform: translateX(-50%); /* 横方向の中央揃え */
+            z-index: 999; /* メニューが最前面に表示されるようにZインデックスを指定 */
+            background-color: rgba(239, 141, 22, 0.651); /* メニューの背景色を指定 */
+            border-radius: 50px; /* メニューを楕円形にするために50pxのボーダーラジウスを指定 */
+        }
+
+        .menu li {
+            display: inline-block;
+            padding: 10px 20px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: 800px;
+            margin: auto;
+            background: #fd2f2f;
+        }
+
+        .card-wrap {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex-basis: 29.33%;
+            margin: 2% 2% 2% 2%;
+            border: 1px #110b8b solid;
+        }
+
+        .txt {
+        margin: 4% 6%;
+        line-height: 1.3;
+        font-size: 14px;
+        background-color: orange; /* オレンジ色の背景を追加 */
+        padding: 10px; /* 背景色の周囲に余白を追加 */
+        border-radius: 5px; /* ボーダーラジウスを指定して角を丸める */
+    }
+        .h-large {
+            text-align: center;
+            margin: 80px auto 40px;
+            font-size: 32px;
+        }
+
+        /* 拡大されたカードのスタイルを定義します */
+.card.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    background: rgba(24, 23, 23, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.card.expanded img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card.expanded .txt {
+    display: none;
+}
+
+
+        @media screen and (max-width:480px) {
+
+            /*　画面サイズが480px以下の場合ここの記述が適用される　*/
+            h1 {
+                color: brown;
+            }
+
+            body {
+                background: yellow;
+            }
+
+            .card {
+                flex-basis: 100%;
+            }
+
+            .h-large {
+                margin: 40px auto 24px;
+                font-size: 24px;
+            }
+        }
+
+    /* Scale up the card on hover */
+    .card:hover {
+        transform: scale(1.25); /* カードを120％に拡大 */
+        transition: transform 0.3s ease; /* スムーズなアニメーションを追加 */
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <div class="wrap">
+
+            <div style="text-align: center; background-color: rgb(250, 161, 35); border-radius: 50px; padding: 10px;">
+                <h1 style="display: inline-block; color: #ffffff;">デッサン</h1>
+            </div>
+
+            <!-- 画像は横幅1600px、200kb以下に圧縮 -->
+            <div class="card-wrap">
+                <div class="card" onclick="expandCard(this)">
+                    <img src="kutu.jpg" alt="">
+                    <div class="txt">
+                        <p>黒い長靴</p>
+                    </div>
+
+                </div>
+                <div class="card" onclick="expandCard(this)">
+                    <img src="katati.jpg" alt="">
+                    <div class="txt">
+                        <p>色々な形</p>
+                    </div>
+
+                </div>
+                <div class="card" onclick="expandCard(this)">
+                    <img src="te.jpg" alt="">
+                    <div class="txt">
+                        <p>手（ポーズは自由）</p>
+                    </div>
+
+                </div>
+                <div class="card" onclick="expandCard(this)">
+                    <img src="hako.jpg" alt="">
+                    <div class="txt">
+                        <p>段ボール箱</p>
+                    </div>
+
+                </div>
+                <div class="card" onclick="expandCard(this)">
+                    <img src="kai.jpg" alt="">
+                    <div class="txt">
+                        <p>巨大貝殻</p>
+                    </div>
+
+                </div>
+
+                <div class="card" onclick="expandCard(this)">
+                    <img src="kabinn.jpg" alt="">
+                    <div class="txt">
+                        <p>花瓶のような物</p>
+                    </div>
+
+            </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+
+        <!-- ここに文章を追加します --><p>
+            <div style="text-align: center;">
+                <div style="background-color: rgba(253, 161, 53, 0.8); border-radius: 15px; padding: 10px; display: inline-block;">
+            　これらの作品は私がデッサンの課題として制作しました。<br>
+            　写真をクリックすると画像を拡大し、画像のダウンロードが行えます。<br>
+            　<b style="color: rgb(169, 30, 30);">figmaの作品に関しては以下のURLからご覧いただけます。<br>
+                　<a id="figmaLink" href="https://www.figma.com/proto/btkczxZwfi1xfiZL8qFnmP/sample_wf?type=design&node-id=20-4248&t=2lmkyEBMTi2Gs7sn-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=20%3A4248&mode=design" target="_blank">figmaの作品の詳細を見る</a>
+
+                <script>
+                    // リンク要素を取得します
+                    const figmaLink = document.getElementById('figmaLink');
+                  
+                    // 表示およびタイピングされるテキスト
+                    const loadingText = "読み込み中..........................................";
+                    let currentIndex = 0;
+                  
+                    // タイピング効果をシミュレートする関数
+                    function typeText() {
+                        if (currentIndex < loadingText.length) {
+                            figmaLink.innerText += loadingText.charAt(currentIndex);
+                            currentIndex++;
+                            setTimeout(typeText, 3000); // タイピングの速さを調整します（ミリ秒単位）
+                        } else {
+                            // 全ての文字が表示されたら、リンクにリダイレクトします
+                            window.location.href = figmaLink.href;
+                        }
+                    }
+                  
+                    // リンクがクリックされたときにタイピング効果を開始します
+                    figmaLink.addEventListener('click', function (event) {
+                        event.preventDefault(); // デフォルトのリンクの動作を防ぎます
+                        typeText();
+                    });
+                    
+                </script>
+                
+        </p>
+    </b>
+    
+</div>
+
+    </main>
+    
+    <audio id="hoverSound">
+        <!-- hover-sound.mp3のような音声ファイルへのパスを指定してください -->
+        <source src="dessannhover.mp3" type="audio/mpeg">
+        <!-- 必要に応じて他のオーディオ形式のソースも追加して、ブラウザの互換性を向上させます -->
+        <!-- <source src="hover-sound.ogg" type="audio/ogg"> -->
+        <!-- <source src="hover-sound.wav" type="audio/wav"> -->
+        <!-- ブラウザがHTML5オーディオをサポートしていない場合のフォールバックコンテンツを追加してください -->
+        ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+
+    <audio id="clickSound">
+        <!-- click-sound.mp3のような音声ファイルへのパスを指定してください -->
+        <source src="dessannclick.mp3" type="audio/mpeg">
+        <!-- 必要に応じて他のオーディオ形式のソースも追加して、ブラウザの互換性を向上させます -->
+        <!-- <source src="click-sound.ogg" type="audio/ogg"> -->
+        <!-- <source src="click-sound.wav" type="audio/wav"> -->
+        <!-- ブラウザがHTML5オーディオをサポートしていない場合のフォールバックコンテンツを追加してください -->
+        ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+
+    <audio id="figmaLinkSound">
+        <!-- figma-link-sound.mp3のような音声ファイルへのパスを指定してください -->
+        <source src="dessannclick2.mp3" type="audio/mpeg">
+        <!-- 必要に応じて他のオーディオ形式のソースも追加して、ブラウザの互換性を向上させます -->
+        <!-- <source src="figma-link-sound.ogg" type="audio/ogg"> -->
+        <!-- <source src="figma-link-sound.wav" type="audio/wav"> -->
+        <!-- ブラウザがHTML5オーディオをサポートしていない場合のフォールバックコンテンツを追加してください -->
+        ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+
+    <audio id="typingSound">
+        <!-- typing-sound.mp3のような音声ファイルへのパスを指定してください -->
+        <source src="dessannclick2.mp3" type="audio/mpeg">
+        <!-- 必要に応じて他のオーディオ形式のソースも追加して、ブラウザの互換性を向上させます -->
+        <!-- <source src="typing-sound.ogg" type="audio/ogg"> -->
+        <!-- <source src="typing-sound.wav" type="audio/wav"> -->
+        <!-- ブラウザがHTML5オーディオをサポートしていない場合のフォールバックコンテンツを追加してください -->
+        ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+
+    <audio id="clickSound2">
+        <!-- 音声ファイルのパスを指定してください -->
+        <source src="dessannclick2.mp3" type="audio/mpeg">
+        <source src="dessannclick2.ogg" type="audio/ogg">
+        <source src="dessannclick2.wav" type="audio/ogg">
+        <!-- 必要に応じて他のオーディオ形式のソースも追加して、ブラウザの互換性を向上させます -->
+        <!-- <source src="dessannclick2.ogg" type="audio/ogg"> -->
+        <!-- <source src="dessannclick2.wav" type="audio/wav"> -->
+        <!-- ブラウザがHTML5オーディオをサポートしていない場合のフォールバックコンテンツを追加してください -->
+        ブラウザがオーディオ要素をサポートしていません。
+    </audio>
+
+
+    <script>
+
+    // オーディオ要素への参照を取得します
+    const hoverSound = document.getElementById('hoverSound');
+    const clickSound = document.getElementById('clickSound');
+    const typingSound = document.getElementById('typingSound');
+    const dessannclick2 = document.getElementById('dessannclick2'); 
+
+    // マウスがカード上に乗ったときに音を再生する関数を定義します
+    function playHoverSound() {
+        hoverSound.currentTime = 0; // 音声を最初から再生します（すでに再生中の場合も）
+        hoverSound.play();
+    }
+
+    // カードをクリックしたときに音を再生する関数を定義します
+    function playClickSound() {
+        clickSound.currentTime = 0; // 音声を最初から再生します（すでに再生中の場合も）
+        clickSound.play();
+    }
+
+    // タイピング効果を再生する関数を定義します
+    // リンクがクリックされたときにタイピング効果を開始します
+    figmaLink.addEventListener('click', function (event) {
+        event.preventDefault(); // デフォルトのリンクの動作を防ぎます
+        typeText();
+        playFigmaLinkSound(); // リンクがクリックされたときに音を再生します
+    });
+
+        // リンクがクリックされたときにタイピング効果を開始します
+        figmaLink.addEventListener('click', function (event) {
+        event.preventDefault(); // デフォルトのリンクの動作を防ぎます
+        typeText();
+        playFigmaLinkSound(); // リンクがクリックされたときに音を再生します
+    });
+
+    // 各カードにイベントリスナーを追加して、カード上にマウスが乗ったときに音を再生します
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', playHoverSound);
+    });
+
+    // 各カードにイベントリスナーを追加して、カードがクリックされたときに音を再生します
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            playClickSound();
+            expandCard(this);
+        });
+    });
+
+    function expandCard(card) {
+        // クリックされたカードのクラスに "expanded" を追加します
+        card.classList.add('expanded');
+
+        // カードのテキストを非表示にします
+        const txtElement = card.querySelector('.txt');
+        txtElement.style.display = 'none';
+
+        // テキストを1文字ずつ表示する処理を追加します
+        const textContent = txtElement.innerText;
+        txtElement.innerText = ''; // テキストをクリア
+
+        let charIndex = 0;
+        const typingInterval = 100; // タイピングのインターバル（ミリ秒）
+        const typingTimer = setInterval(() => {
+            if (charIndex < textContent.length) {
+                txtElement.innerText += textContent.charAt(charIndex);
+                charIndex++;
+                playTypingSound(); // タイピング音を再生
+            } else {
+                clearInterval(typingTimer); // タイピングが終了したらタイマーを停止
+            }
+        }, typingInterval);
+        
+    }
+
+    function playFigmaLinkSound() {
+    const clickSound2 = document.getElementById('clickSound2');
+    clickSound2.currentTime = 0;
+    clickSound2.play();
+}
+    
+    
+
+    // リンクがクリックされたときにタイピング効果を開始します
+    figmaLink.addEventListener('click', function (event) {
+        event.preventDefault(); // デフォルトのリンクの動作を防ぎます
+        typeText();
+        playFigmaLinkSound(); // リンクがクリックされたときに音を再生します
+    });
+
+
+        function expandCard(card) {
+            // クリックされたカードのクラスに "expanded" を追加します
+            card.classList.add('expanded');
+
+            // カードのテキストを非表示にします
+            const txtElement = card.querySelector('.txt');
+            txtElement.style.display = 'none';
+
+            // ダウンロードボタンを作成して右上に設置します
+            const downloadButton = document.createElement('button');
+            downloadButton.innerText = 'ダウンロード';
+            downloadButton.style.position = 'fixed';
+            downloadButton.style.top = '20px';
+            downloadButton.style.right = '200px'; // ボタンを適切な位置に配置するために右側のオフセットを調整します
+            downloadButton.style.zIndex = '10000';
+            downloadButton.onclick = function () {
+                // カードの画像をダウンロードします
+                const imgElement = card.querySelector('img');
+                const imageURL = imgElement.src;
+                const fileName = 'downloaded_image.jpg';
+                downloadImage(imageURL, fileName);
+            };
+
+            // 90度回転させるボタンを作成して右上に設置します
+            const rotateButton = document.createElement('button');
+            rotateButton.innerText = '回転';
+            rotateButton.style.position = 'fixed';
+            rotateButton.style.top = '20px';
+            rotateButton.style.right = '130px'; // ボタンを適切な位置に配置するために右側のオフセットを調整します
+            rotateButton.style.zIndex = '10000';
+            rotateButton.onclick = function () {
+                // カードの画像を90度回転させます
+                const imgElement = card.querySelector('img');
+                const currentRotation = parseInt(imgElement.dataset.rotation || '0');
+                const newRotation = currentRotation + 90;
+                imgElement.dataset.rotation = newRotation;
+                imgElement.style.transform = `rotate(${newRotation}deg)`;
+            };
+
+            // ページを読み込み直すボタンを作成して右上に設置します
+            const closeButton = document.createElement('button');
+            closeButton.innerText = '閉じる';
+            closeButton.style.position = 'fixed';
+            closeButton.style.top = '20px';
+            closeButton.style.right = '20px';
+            closeButton.style.zIndex = '10000';
+            closeButton.onclick = function () {
+                // ボタンをクリックしたときにページをリロードします
+                location.reload();
+            };
+
+            // ボタンをbody要素に追加します
+            document.body.appendChild(downloadButton);
+            document.body.appendChild(rotateButton);
+            document.body.appendChild(closeButton);
+        }
+
+        // 画像をダウンロードする関数
+        function downloadImage(url, filename) {
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = filename;
+            anchor.click();
+        }
+
+    </script>
+
+</html>
