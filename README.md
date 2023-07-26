@@ -214,7 +214,7 @@
                         if (currentIndex < loadingText.length) {
                             figmaLink.innerText += loadingText.charAt(currentIndex);
                             currentIndex++;
-                            setTimeout(typeText, 3000); // タイピングの速さを調整します（ミリ秒単位）
+                            setTimeout(typeText, 300); // タイピングの速さを調整します（ミリ秒単位）
                         } else {
                             // 全ての文字が表示されたら、リンクにリダイレクトします
                             window.location.href = figmaLink.href;
